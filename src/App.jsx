@@ -1,10 +1,10 @@
-import abi from "../artifacts/contracts/Message.sol/Message.json";
+import abi from "../artifacts/contracts/Portfolio.sol/Portfolio.json";
 import { useAccount } from "wagmi";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import "./App.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Button } from "decentraland-ui";
+import { Button, Flex, Spacer } from "@chakra-ui/react";
 
 function App() {
   const [state, setState] = useState({
@@ -15,7 +15,7 @@ function App() {
   const { address, isConnected, isDisconnected } = useAccount();
 
   const contractInstance = async () => {
-    const contractAddress = "<deployed contract addess>";
+    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
     const contractABI = abi.abi;
 
     try {
@@ -47,9 +47,7 @@ function App() {
 
   const handleShowMessageClick = async () => {
     if (state.contract) {
-      const message = await state.contract.readMsg(
-        "<address to show msg>"
-      );
+      const message = await state.contract.readMsg("<address to show msg>");
       console.log("Message:", message);
     }
   };
@@ -65,7 +63,7 @@ function App() {
       <ConnectButton onPress={contractInstance} />
       {console.log("state", state)}
       <div className="show-msg">
-        <Button onClick={handleShowMessageClick}>Show Message</Button>
+        <Button>Click me</Button>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { publicProvider } from "wagmi/providers/public";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const { chains, provider } = configureChains(
   [sepolia, mainnet, polygon, optimism, arbitrum],
@@ -16,7 +17,7 @@ const { chains, provider } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: "DappBoilerPlate",
-  projectId: "<project id from >", //project id from rainbowkit
+  projectId: "31308eb244f6bc63240801613d341bef", //project id from rainbowkit
   chains,
 });
 
@@ -29,7 +30,9 @@ const wagmiClient = createClient({
 ReactDOM.createRoot(document.getElementById("root")).render(
   <WagmiConfig client={wagmiClient}>
     <RainbowKitProvider modalSize="compact" chains={chains}>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </RainbowKitProvider>
   </WagmiConfig>
 );
