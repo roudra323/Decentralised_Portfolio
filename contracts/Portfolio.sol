@@ -6,7 +6,7 @@ contract Portfolio {
     uint256 public projectCount;
     uint256 public educationCount;
     uint256 public experienceCount;
-    string public imageLink = "Add your cid";
+    string public imageLink = "QmRQ2aRSuhSsC1ofM7B58A7FTavqypxoTGfE4D28YZoYnv";
     string public description =
         "over 6 months of practical experience with a good knowledge in blockchain development.i help web3 community by contributing in the web3 space.";
     string public resumeLink = "Add your cid";
@@ -47,12 +47,16 @@ contract Portfolio {
     // Constructor
     constructor() {
         manager = msg.sender;
-        projectCount = 1;
     }
 
     // Modifier
     modifier onlyManager() {
         require(manager == msg.sender, "You are not the manager");
+        _;
+    }
+
+    modifier validCountORnot(uint256 count, uint256 inicount) {
+        require(count >= 0 && count < inicount, "Count is not valid");
         _;
     }
 
@@ -64,13 +68,15 @@ contract Portfolio {
         string calldata _githubLink,
         string calldata _live_site
     ) external onlyManager {
-        projects[projectCount] = Project(
-            projectCount,
-            _name,
-            _description,
-            _image,
-            _githubLink,
-            _live_site
+        projects.push(
+            Project(
+                projectCount,
+                _name,
+                _description,
+                _image,
+                _githubLink,
+                _live_site
+            )
         );
         projectCount++;
     }
@@ -82,9 +88,9 @@ contract Portfolio {
         string calldata _githubLink,
         string calldata _live_site,
         uint256 _projectCount
-    ) external onlyManager {
-        require(_projectCount >= 0, "Only 3 projects allowed");
-        projects[projectCount] = Project(
+    ) external onlyManager validCountORnot(_projectCount, projectCount) {
+        require(_projectCount >= 0, "Project ID can't be negative");
+        Project memory tempPj = Project(
             _projectCount,
             _name,
             _description,
@@ -92,6 +98,8 @@ contract Portfolio {
             _githubLink,
             _live_site
         );
+
+        projects[_projectCount] = tempPj;
     }
 
     function allProjects() external view returns (Project[] memory) {
@@ -100,7 +108,9 @@ contract Portfolio {
 
     function addProjectToHome(uint256 _projectCount)
         external
+        view
         onlyManager
+        validCountORnot(_projectCount, projectCount)
         returns (Project memory)
     {
         return projects[_projectCount];
