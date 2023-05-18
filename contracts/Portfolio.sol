@@ -8,8 +8,8 @@ contract Portfolio {
     uint256 public experienceCount;
     string public imageLink = "QmRQ2aRSuhSsC1ofM7B58A7FTavqypxoTGfE4D28YZoYnv";
     string public description =
-        "over 6 months of practical experience with a good knowledge in blockchain development.i help web3 community by contributing in the web3 space.";
-    string public resumeLink = "Add your cid";
+        "Over 8 months of practical experience with a good knowledge in blockchain development.";
+    string public resumeLink = "QmQR4rKrvUwcGsbCGJ6Z2wgmUCukQPzeK1RDW1AvLGW9NV";
     address public manager;
 
     // Structs
@@ -40,7 +40,6 @@ contract Portfolio {
 
     // Arrays of structs
     Project[] public projects;
-    Project[] public homeProjects;
     Education[3] public educationDetails;
     Experience[3] public experienceDetails;
 
@@ -104,16 +103,6 @@ contract Portfolio {
 
     function allProjects() external view returns (Project[] memory) {
         return projects;
-    }
-
-    function addProjectToHome(uint256 _projectCount)
-        external
-        view
-        onlyManager
-        validCountORnot(_projectCount, projectCount)
-        returns (Project memory)
-    {
-        return projects[_projectCount];
     }
 
     // Functions - Education

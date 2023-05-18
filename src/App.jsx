@@ -6,7 +6,26 @@ import "./App.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Button, Flex, Spacer } from "@chakra-ui/react";
 
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+
+import RootLayout from "./layouts/RootLayout";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
+
 function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+      </Route>
+    )
+  );
   const [state, setState] = useState({
     provider: null,
     signer: null,
@@ -15,7 +34,7 @@ function App() {
   const { address, isConnected, isDisconnected } = useAccount();
 
   const contractInstance = async () => {
-    const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const contractAddress = "0x0739BEb178813C639c0C2095cC60C7b5890a5279";
     const contractABI = abi.abi;
 
     try {
@@ -45,26 +64,9 @@ function App() {
     }
   }, [isConnected]);
 
-  const handleShowMessageClick = async () => {
-    if (state.contract) {
-      const message = await state.contract.readMsg("<address to show msg>");
-      console.log("Message:", message);
-    }
-  };
-
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        padding: 12,
-      }}
-    >
-      <ConnectButton onPress={contractInstance} />
-      {console.log("state", state)}
-      <div className="show-msg">
-        <Button>Click me</Button>
-      </div>
+    <div>
+      <RouterProvider router={router} />
     </div>
   );
 }
