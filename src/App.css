@@ -1,8 +1,31 @@
-.show-msg {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,200&display=swap');
+* {
+  color: rgb(241, 232, 232);
+
   text-align: center;
-  font: 5em sans-serif;
+  font-family: 'Fira Sans', sans-serif;
+  color: white;
+}
+
+.Text {
+  background-image: linear-gradient(to left, #d3cce3, #e9e4f0);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  font-size: 6xl;
+  font-weight: 800;
+}
+
+.layout {
+  background: #c33764; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #1d2671,
+    #c33764
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #1d2671,
+    #c33764
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
