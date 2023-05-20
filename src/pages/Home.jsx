@@ -1,15 +1,11 @@
-import { Flex, Text, Center, VStack } from "@chakra-ui/react";
+import { Flex, Text, Center, VStack, Divider } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 
 function Home() {
   const [developerType, setDeveloperType] = useState("Blockchain Developer");
 
   useEffect(() => {
-    const textList = [
-      "Solidity Developer",
-      "Smart Contract Developer",
-      "Blockchain Developer",
-    ];
+    const textList = ["Smart Contract Developer", "Blockchain Developer"];
 
     let currentIndex = 0;
     let isErasing = false;
@@ -34,7 +30,7 @@ function Home() {
         }
       }
       setDeveloperType(currentText);
-    }, 100); // Change text every 100 milliseconds
+    }, 90); // Change text every 100 milliseconds
 
     return () => {
       clearInterval(timer);
@@ -44,24 +40,29 @@ function Home() {
   return (
     <Flex justifyContent="center" alignItems="center" h="50vh">
       <VStack>
-        <Text
-          as="h1"
-          bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
-          bgClip="text"
-          fontSize="6xl"
-          fontWeight="extrabold"
-        >
-          Heyy, Roudra here
-        </Text>
-        <Text
-          as="h2"
-          bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
-          bgClip="text"
-          fontSize="6xl"
-          fontWeight="extrabold"
-        >
-          {developerType}
-        </Text>
+        <VStack paddingBottom="10px">
+          <Text
+            as="h1"
+            bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
+            bgClip="text"
+            fontSize="6xl"
+            fontWeight="extrabold"
+          >
+            Heyy, Roudra here
+          </Text>
+        </VStack>
+
+        <VStack>
+          <Text
+            as="h2"
+            bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
+            bgClip="text"
+            fontSize="6xl"
+            fontWeight="extrabold"
+          >
+            {developerType}
+          </Text>
+        </VStack>
       </VStack>
     </Flex>
   );

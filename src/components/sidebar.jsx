@@ -1,18 +1,51 @@
 import React from "react";
-import { Box, Text, VStack, Avatar } from "@chakra-ui/react";
+import { Box, Text, VStack, Center, Divider, Image } from "@chakra-ui/react";
 
 function Sidebar() {
   return (
-    <Box w="250px" h="100vh" p={4} pt="50px">
+    <Box
+      w="250px"
+      h="100vh"
+      p={4}
+      pt="35px"
+      position="fixed"
+      overflowY="auto"
+      sx={{
+        "@media (max-width: 767px)": {
+          position: "static",
+          height: "auto",
+          mb: "20px",
+        },
+      }}
+    >
       <VStack spacing={4} align="center">
-        <Avatar
-          size="2xl"
-          src="https://ipfs.io/ipfs/QmRQ2aRSuhSsC1ofM7B58A7FTavqypxoTGfE4D28YZoYnv"
-        />
+        <Box border="8px" borderRadius="full">
+          <Image paddingBottom="30px" src="/me.png" />
+        </Box>
 
-        <Text>Item 2</Text>
-        <Text>Item 3</Text>
+        <Text as="h4" fontWeight="bold" pt="10px">
+          About Me
+        </Text>
+
+        <Divider orientation="horizontal" />
+
+        <Text>
+          Aspiring blockchain developer over 9 months of experience in Solidity,
+          Hardhat, EtherJS, ReactJS, and React components, and a passion for
+          blockchain technology. Currently pursuing BSc in Computer Science
+        </Text>
         {/* Add more sidebar items */}
+        <Text as="h4" fontWeight="bold" pt="10px">
+          Education
+        </Text>
+
+        <Divider orientation="horizontal" />
+
+        <Text>
+          Aspiring blockchain developer over 9 months of experience in Solidity,
+          Hardhat, EtherJS, ReactJS, and React components, and a passion for
+          blockchain technology. Currently pursuing BSc in Computer Science
+        </Text>
       </VStack>
     </Box>
   );

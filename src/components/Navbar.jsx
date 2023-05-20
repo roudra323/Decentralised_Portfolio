@@ -12,7 +12,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 function Navbar() {
   return (
-    <Flex align="left" p="10px">
+    <Flex align="center" p="10px">
       <Flex justify="space-between" p="10px">
         <Text pr="20px">Home</Text>
         <Text pr="20px">Projects</Text>

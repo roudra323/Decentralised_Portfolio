@@ -29,3 +29,23 @@
     #c33764
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  display: flex;
+  padding: 20px 5px 0 20px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 10px;
+}
