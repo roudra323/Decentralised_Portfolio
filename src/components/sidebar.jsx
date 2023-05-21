@@ -18,7 +18,7 @@ function Sidebar() {
         },
       }}
     >
-      <VStack spacing={4} align="center">
+      <VStack paddingBottom="30px" spacing={4} align="center">
         <Box border="8px" borderRadius="full">
           <Image paddingBottom="30px" src="/me.png" />
         </Box>
@@ -42,9 +42,7 @@ function Sidebar() {
         <Divider orientation="horizontal" />
 
         <Text>
-          Aspiring blockchain developer over 9 months of experience in Solidity,
-          Hardhat, EtherJS, ReactJS, and React components, and a passion for
-          blockchain technology. Currently pursuing BSc in Computer Science
+          BSc in Computer Science from Jagannath University (2020-2024)
         </Text>
       </VStack>
     </Box>

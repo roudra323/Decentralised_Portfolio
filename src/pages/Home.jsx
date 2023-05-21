@@ -1,68 +1,35 @@
-import { Flex, Text, Center, VStack, Divider } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  VStack,
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Spacer,
+} from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
+import Contact from "../components/Contact";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
+import Welcome from "../components/Welcome";
 
 function Home() {
-  const [developerType, setDeveloperType] = useState("Blockchain Developer");
-
-  useEffect(() => {
-    const textList = ["Smart Contract Developer", "Blockchain Developer"];
-
-    let currentIndex = 0;
-    let isErasing = false;
-    let currentText = "";
-
-    const timer = setInterval(() => {
-      if (!isErasing) {
-        if (currentText.length === textList[currentIndex].length) {
-          isErasing = true;
-        } else {
-          currentText = textList[currentIndex].substring(
-            0,
-            currentText.length + 1
-          );
-        }
-      } else {
-        if (currentText.length === 0) {
-          isErasing = false;
-          currentIndex = (currentIndex + 1) % textList.length;
-        } else {
-          currentText = currentText.substring(0, currentText.length - 1);
-        }
-      }
-      setDeveloperType(currentText);
-    }, 90); // Change text every 100 milliseconds
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
   return (
-    <Flex justifyContent="center" alignItems="center" h="50vh">
-      <VStack>
-        <VStack paddingBottom="10px">
-          <Text
-            as="h1"
-            bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
-            bgClip="text"
-            fontSize="6xl"
-            fontWeight="extrabold"
-          >
-            Heyy, Roudra here
-          </Text>
-        </VStack>
-
-        <VStack>
-          <Text
-            as="h2"
-            bgGradient="linear(to-l, #d3cce3, #e9e4f0)"
-            bgClip="text"
-            fontSize="6xl"
-            fontWeight="extrabold"
-          >
-            {developerType}
-          </Text>
-        </VStack>
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      h="50vh"
+      overflow-y="scroll"
+    >
+      <VStack spacing={8}>
+        <Welcome />
+        <Projects />
+        <Skills />
+        <Contact />
       </VStack>
     </Flex>
   );

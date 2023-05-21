@@ -1,45 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,200&display=swap');
+
 * {
   color: rgb(241, 232, 232);
-
   text-align: center;
   font-family: 'Fira Sans', sans-serif;
   color: white;
 }
 
-.Text {
-  background-image: linear-gradient(to left, #d3cce3, #e9e4f0);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  font-size: 6xl;
-  font-weight: 800;
-}
-
 .layout {
-  background: #c33764; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #1d2671,
-    #c33764
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #1d2671,
-    #c33764
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #c33764;
+  background: -webkit-linear-gradient(to right, #1d2671, #c33764);
+  background: linear-gradient(to right, #1d2671, #c33764);
+  height: 100%; /* Set the height to 100% */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-
   height: 100%;
   display: flex;
   padding: 20px 5px 0 20px;
 }
 
+.skills {
+  height: 30px;
+  width: 30px;
+}
+
+@media (max-width: 767px) {
+  /* Mobile styles */
+  .sidebar {
+    display: none; /* Hide the sidebar on mobile */
+  }
+}
+
+/* Add media queries for tablet, laptop, and other screen sizes as needed */
+
+/* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 5px;
   background: transparent;
